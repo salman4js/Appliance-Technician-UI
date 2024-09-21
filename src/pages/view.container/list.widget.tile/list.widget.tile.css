@@ -1,0 +1,35 @@
+.list-widget-tile-wrapper{
+    background-color: #F0F0F0;
+    color: black;
+    border-bottom: #a6a6a6;
+    position: relative;
+    margin: 2px 0 2px 0 !important;
+}
+
+.list-widget-tile-container{
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.list-widget-tile-title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #090e2c;
+}
+
+.list-widget-menu-actions{
+    position: absolute;
+    height: 100%;
+    right: 2em;
+    display: inline-block;
+}
+
+.list-child-menu-actions{
+    top: 25%;
+    position: absolute;
+}
+
+.list-widget-item-wrapper{
+    height: 100%;
+    overflow-y: auto;
+}

@@ -1,0 +1,25 @@
+.widget-tile {
+    width: calc(100vw - 32px);
+    height: auto;
+    text-align: left;
+    margin: 8px 16px 8px 16px !important;
+    float: left;
+    transition: all 0.2s ease;
+    position: relative;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.widget-tile-title{
+    align-items: center;
+    color: #232e72;
+    display: flex;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 40px;
+    margin: 0 4px 0 44px;
+    min-height: 18px;
+    overflow: hidden;
+    text-align: left;
+    z-index: 2;
+}

@@ -1,0 +1,41 @@
+.global-message-wrapper{
+    display: flex;
+    padding: 16px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    font-family: 'OpenTextSans Regular', 'Helvetica', sans-serif;
+    color: black;
+    margin-bottom: 10px;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: slideDown 0.5s forwards;
+}
+
+.global-message-success-icon{
+    height: 25px;
+    width: 25px;
+    background-image: url('./global.message.icon/notification_success24.svg');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+.global-message-information-icon{
+    height: 25px;
+    width: 25px;
+    background-image: url('./global.message.icon/notification_information.svg');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

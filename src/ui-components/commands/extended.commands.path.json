@@ -1,0 +1,5 @@
+[
+  "./commands.initialize/command.go.back.js",
+  "./commands.initialize/command.header.menu.js",
+  "./commands.initialize/command.add.js"
+]

@@ -1,0 +1,14 @@
+.properties-form-view-button-region{
+    position: absolute;
+    bottom: 0;
+    width: 100%
+}
+
+.properties-form-view-wrapper{
+    height: 100%;
+    background-color: white;
+}
+
+.properties-form-view{
+    padding-top: 10px;
+}

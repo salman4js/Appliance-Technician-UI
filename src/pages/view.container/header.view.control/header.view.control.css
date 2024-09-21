@@ -1,0 +1,16 @@
+
+.header-control-wrapper {
+    display: flex;
+    padding: 16px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #090e2c;
+    font-family: 'OpenTextSans Regular', 'Helvetica', sans-serif;
+    color: #fff;
+}
+
+.header-control-middle-region {
+    text-align: center;
+    flex-grow: 1;
+}
