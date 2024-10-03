@@ -61,7 +61,7 @@ class AppStartup extends React.Component {
                     body: fieldData
                 };
                 RestResourceConnector.makeAjaxCall(options).then((resp) => {
-                    Collections.setCollections('userInfo', resp.result, 'currentUser');
+                    Collections.setCollections('userInfo', resp.data.result, 'currentUser');
                     this.props.options.navigate('/home', {replace: true});
                 }).catch((err) => {
                    // Find password form field by name and add error message to that field inline toast attribute.

@@ -5,7 +5,9 @@ const RestResources = Object.freeze({
     formDialog: (options) => `${options.repoName}/properties-form-dialog`,
     admin_worker: (options) => `${options.repoName}/create-worker`,
     admin_order: (options) => `${options.repoName}/create-new-order`,
-    accept_order: (options) => `${options.repoName}/accept-worker-order`
+    accept_order: (options) => `${options.repoName}/accept-worker-order`,
+    admin: (options) => `${options.repoName}/create-admin`,
+    admin_delete: (options) => `${options.repoName}/admin-delete-non-admin`
 });
 
 export default RestResources;

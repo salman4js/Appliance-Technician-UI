@@ -48,8 +48,8 @@ class WidgetTile extends React.Component {
 
     _getListOfWidgets(){
         RestResourceConnector.makeAjaxCall({repoName:'widgets', linkRel: 'widgets', method: 'get', query: {userRole: this._getCurrentUserRole().loggedInUserRole}}).then((resp) => {
-            if(resp.success){
-                this.updateStateComponent({key: 'widgetOptions', value: resp.result, nextFunc: () => this._toggleLoader(false)})
+            if(resp.data.success){
+                this.updateStateComponent({key: 'widgetOptions', value: resp.data.result, nextFunc: () => this._toggleLoader(false)})
             } else {
 
             }

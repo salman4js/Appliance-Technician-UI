@@ -57,18 +57,18 @@ class PropertiesView extends React.Component{
             if(result.length === 0){
                 this._toggleLoader(true);
                 const fieldData = nodeConvertor(this.state.form), loggedUserInfo = this._getLoggedInUserDataFromCollection();
-                fieldData['userRole'] = loggedUserInfo.loggedInUserRole;
                 const options = {
                     linkRel: this.widget,
                     repoName: this.widget,
                     method: 'post',
                     body: fieldData,
                     query: {
-                        adminId: loggedUserInfo.loggedInUserId
+                        adminId: loggedUserInfo.loggedInUserId,
+                        userRole: loggedUserInfo.loggedInUserRole
                     }
                 }
                 RestResourceConnector.makeAjaxCall(options).then((resp) => {
-                    resp.statusCode === 201 && this.props.updateItemsList({property: _.isArray(resp.result) ? resp.result[0] : resp.result});
+                    resp.data.statusCode === 201 && this.props.updateItemsList({property: _.isArray(resp.data.result) ? resp.data.result[0] : resp.data.result});
                     this.props.status.events._updateStateRouter({action: 'DELETE'});
                 }).catch((err) => {
 
@@ -103,8 +103,8 @@ class PropertiesView extends React.Component{
                 field.asyncOptions.restResources.query = this.prepareQueryParams(field.asyncOptions.restResources.queryRequired);
             }
             RestResourceConnector.makeAjaxCall(field.asyncOptions.restResources).then((resp) => {
-                if (resp.statusCode === 200) {
-                    field.asyncOptions.restResourceValue = resp.result;
+                if (resp.data.statusCode === 200) {
+                    field.asyncOptions.restResourceValue = resp.data.result;
                     resolve(field);
                 } else {
                     resolve();
@@ -144,8 +144,8 @@ class PropertiesView extends React.Component{
 
         RestResourceConnector.makeAjaxCall({ repoName: 'properties_form', linkRel: 'formDialog', method: 'get', query: { widget: this.widget } })
             .then((resp) => {
-                if (resp.statusCode === 200) {
-                    this.checkForAsyncAndPopulate(resp.result).then((result) => {
+                if (resp.data.statusCode === 200) {
+                    this.checkForAsyncAndPopulate(resp.data.result).then((result) => {
                         // If status object contains selectedNodes information, populate those values with the form dialog!
                         if(this.props.status.selectedNode){
                             result = this.populateFormValue(result);

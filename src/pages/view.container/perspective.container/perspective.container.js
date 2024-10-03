@@ -121,7 +121,7 @@ class PerspectiveContainer extends React.Component {
             query: this.formQueryParamBasedOnUserRole()
         }
         RestResourceConnector.makeAjaxCall(options).then((resp) => {
-            this.updateStateComponent({key: 'itemsList', value: resp.result, nextFunc: () => this._toggleLoader(false)})
+            this.updateStateComponent({key: 'itemsList', value: resp.data.result, nextFunc: () => this._toggleLoader(false)})
         }).catch((err) => {
             console.log(err);
         });

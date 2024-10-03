@@ -38,13 +38,13 @@ class CommandAcceptOrder {
     execute(){
         RestResourceConnector.makeAjaxCall({method: 'patch', linkRel: 'accept_order', repoName: 'order', query: this.formAcceptOrderQuery(),
             body: this.postBody}).then((resp) => {
-                if(resp.success){
+                if(resp.data.success){
                     this.status.events.customModal.events.onCloseCustomModal();
                     this.status.events._reloadPerspectiveContainer();
                     this.status.events._updateViewContainerState({bulkUpdate: true, key: 'globalMessage', value: {show: true, msgOptions: this.getSuccessMsgOptions()}})
                 } else {
                     this.status.events.customModal.events.onCloseCustomModal();
-                    this.status.events._updateViewContainerState({bulkUpdate: true, key: 'globalMessage', value: {show: true, msgOptions: {state: 'rejected', message: resp.message}}})
+                    this.status.events._updateViewContainerState({bulkUpdate: true, key: 'globalMessage', value: {show: true, msgOptions: {state: 'rejected', message: resp.data.message}}})
                 }
             }).catch(() => {
             this.status.events.customModal.events.onCloseCustomModal();

@@ -1,5 +1,6 @@
 [
   "./commands.initialize/commands.inline.menu.actions/command.accept.order.js",
   "./commands.initialize/commands.inline.menu.actions/command.complete.order.js",
-  "./commands.initialize/commands.inline.menu.actions/command.more.details.js"
+  "./commands.initialize/commands.inline.menu.actions/command.more.details.js",
+  "./commands.initialize/commands.inline.menu.actions/command.delete.js"
 ]

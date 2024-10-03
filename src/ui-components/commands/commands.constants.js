@@ -11,6 +11,14 @@ var commandsConstant = Object.freeze({
     commandMoreDetails: {
         label: 'More Details'
     },
+    commandDelete: {
+        label: 'Delete',
+        toastMessage: {
+            403: 'Permission denied to perform this operation.',
+            204: 'Selected admin details has been deleted',
+            500: 'Internal server error occurred.'
+        }
+    },
     isCommandNotEnabled: {
         goBack: ['home'],
         addButton: ['home', 'properties']

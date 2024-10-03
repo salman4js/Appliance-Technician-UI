@@ -37,6 +37,8 @@ const ListField = (props) => {
   useEffect(() => {
     if(props.data.options === undefined && props.data.async && props.data.asyncOptions.populationRequired && props.data.asyncOptions.restResourceValue !== undefined){
         populationMethod(props.data.asyncOptions.restResourceValue, props.data.asyncOptions.populationOptions);
+    } else {
+      setOptions(props.data.options);
     }
   }, []);
 

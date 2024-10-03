@@ -46,9 +46,9 @@ class RestResourceConnector {
               const url = restConnector.buildUrl(),
                   postBody = options.body;
               Connector[options.method](url, postBody, {}).then((res) => {
-                  resolve(res.data)
+                  resolve(res)
               }).catch((err) => {
-                  reject(err.response.data);
+                  reject(err.response);
               })
           });
     };

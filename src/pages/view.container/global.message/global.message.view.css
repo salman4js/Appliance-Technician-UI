@@ -7,7 +7,6 @@
     background-color: white;
     font-family: 'OpenTextSans Regular', 'Helvetica', sans-serif;
     color: black;
-    margin-bottom: 10px;
     opacity: 0;
     transform: translateY(-50px);
     animation: slideDown 0.5s forwards;
