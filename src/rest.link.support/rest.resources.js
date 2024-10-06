@@ -7,7 +7,8 @@ const RestResources = Object.freeze({
     admin_order: (options) => `${options.repoName}/create-new-order`,
     accept_order: (options) => `${options.repoName}/accept-worker-order`,
     admin: (options) => `${options.repoName}/create-admin`,
-    admin_delete: (options) => `${options.repoName}/admin-delete-non-admin`
+    admin_delete: (options) => `${options.repoName}/admin-delete-non-admin`,
+    admin_delete_worker: (options) => `${options.repoName}/admin-delete-worker`
 });
 
 export default RestResources;

@@ -1,19 +1,20 @@
 import React from "react";
-import {Triangle} from "react-loader-spinner";
+import {Oval} from "react-loader-spinner";
 
 export function templateHelpers(options){
   if(options?.defaultTemplate){
       return (
           <div className="d-flex align-items-center justify-content-center">
               <div className = 'top-align'>
-                  <Triangle
-                      height="150"
-                      width="250"
-                      radius="20"
-                      color="white"
-                      ariaLabel="loading"
-                      wrapperStyle
-                      wrapperClass
+                  <Oval
+                      visible={true}
+                      height="80"
+                      width="80"
+                      color="black"
+                      secondaryColor='grey'
+                      ariaLabel="oval-loading"
+                      wrapperStyle={{}}
+                      wrapperClass=""
                   />
                   <p className="text-center loading-message">{options.message}</p>
               </div>

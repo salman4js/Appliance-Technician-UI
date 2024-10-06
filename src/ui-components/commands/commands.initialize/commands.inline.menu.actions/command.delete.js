@@ -13,22 +13,43 @@ class CommandDelete {
             onClick: () => this.execute(),
             signature: 'Command-Delete'
         };
+        this.linkRel = {
+            admin: 'admin_delete',
+            admin_worker: 'admin_delete_worker'
+        }
     };
 
     enabled(){
-        return this.isSuperAdminUser() && this.status.viewOptions.expandedWidgetViewInfo.widgetLabel === 'admin';
+        return this.isSuperAdminUser() && (this.status.viewOptions.expandedWidgetViewInfo.widgetLabel === 'admin' || this.status.viewOptions.expandedWidgetViewInfo.widgetLabel === 'admin_worker');
     };
 
     execute(){
-        RestResourceConnector.makeAjaxCall({method: 'delete', linkRel: 'admin_delete', repoName: 'admin', query: this.formDeleteCommandQuery()})
-            .then((resp) => {
+        if(this.checkNodeCondition()){
+            RestResourceConnector.makeAjaxCall({method: 'delete', linkRel: 'admin_delete',
+                repoName: this.status.viewOptions.expandedWidgetViewInfo.widgetLabel, query: this.formDeleteCommandQuery()})
+                .then((resp) => {
+                    this.status.events.customModal.events.onCloseCustomModal();
+                    resp.status === 204 && this.status.events._reloadPerspectiveContainer();
+                    this.status.events._updateViewContainerState({bulkUpdate: true, key: 'globalMessage', value: {show: true, msgOptions: this.getToastMessageOpts(resp.status)}})
+                }).catch((err) => {
                 this.status.events.customModal.events.onCloseCustomModal();
-                resp.status === 204 && this.status.events._reloadPerspectiveContainer();
-                this.status.events._updateViewContainerState({bulkUpdate: true, key: 'globalMessage', value: {show: true, msgOptions: this.getToastMessageOpts(resp.status)}})
-            }).catch((err) => {
-                this.status.events.customModal.events.onCloseCustomModal();
-                this.status.events._updateViewContainerState({bulkUpdate: true, key: 'globalMessage', value: {show: true, msgOptions: this.getToastMessageOpts(err.statusCode)}})
-        });
+                this.status.events._updateViewContainerState({bulkUpdate: true, key: 'globalMessage', value: {show: true, msgOptions: this.getToastMessageOpts(err.status)}})
+            });
+        } else {
+            this.status.events.customModal.events.onCloseCustomModal();
+            this.status.events._updateViewContainerState({bulkUpdate: true, key: 'globalMessage',
+                value: {show: true, msgOptions: {state: 'rejected', message: commandsConstants.commandDelete[this.status.viewOptions.expandedWidgetViewInfo.widgetLabel].conflict}}})
+        }
+    };
+
+    checkNodeCondition(){
+        if(this.status.viewOptions.expandedWidgetViewInfo.widgetLabel === 'admin_worker'){
+            return this.status.selectedNode.orders.length > 0
+                ? !(this.status.selectedNode.userAcceptedPendingOrder > 0 || this.status.selectedNode.userPendingOrder > 0)
+                : true;
+        } else {
+            return true;
+        }
     };
 
     getToastMessageOpts(statusCode){

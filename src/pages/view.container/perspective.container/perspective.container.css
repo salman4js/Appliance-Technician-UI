@@ -1,0 +1,8 @@
+
+.widget-searchbar-container{
+    padding: 10px;
+}
+
+.view-container-child-view-options .widget-searchbar-container .view-bottom-gap-10px{
+    margin-bottom: 0;
+}

@@ -33,3 +33,11 @@
     height: 100%;
     overflow-y: auto;
 }
+
+.list-widget-searchbar-container{
+    padding: 10px;
+}
+
+.view-container-child-view-options .list-widget-searchbar-container .view-bottom-gap-10px{
+    margin-bottom: 0;
+}

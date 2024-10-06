@@ -46,7 +46,7 @@ class AppStartup extends React.Component {
         if(!this.state.isLoading){
             return appStartupTemplate(this.templateEventHelpers)
         } else {
-            return <BlockActions options = {{message: AppStartupConstants.blockActionsMessage, defaultTemplate: true}} />
+            return <BlockActions options = {{defaultTemplate: true}} />
         }
     };
 

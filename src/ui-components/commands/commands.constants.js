@@ -17,6 +17,12 @@ var commandsConstant = Object.freeze({
             403: 'Permission denied to perform this operation.',
             204: 'Selected admin details has been deleted',
             500: 'Internal server error occurred.'
+        },
+        admin_worker: {
+            conflict: 'Worker still has some pending orders.'
+        },
+        admin: {
+            conflict: 'Admin cannot be deleted.'
         }
     },
     isCommandNotEnabled: {

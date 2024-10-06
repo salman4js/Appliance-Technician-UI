@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import RestResources from "./rest.resources";
 import Connector from "../ui-components/connector/connector";
 
@@ -22,17 +23,18 @@ class RestResourceConnector {
         let url = this.formLink();
         // Check a condition and add query parameters accordingly
         if (this.options.query) {
+            if(this.options.query.selectedNodes){
+                const selectedNodes = this.options.query.selectedNodes;
+                this.options.query.selectedNodes = JSON.stringify(selectedNodes);
+            }
             url += '?';
-            Object.keys(this.options.query).forEach((query) => {
-                if(query === 'selectedNodes'){
-                    let selectedNodes = encodeURIComponent(JSON.stringify(this.options.query.selectedNodes));
-                    url += `${query}=${selectedNodes}&`;
-                    return;
-                }
-                url += `${query}=${this.options.query[query]}&`;
-            });
+            url += this.formQueryParam(this.options.query);
         }
         return url;
+    };
+
+    formQueryParam(queryValue){
+        return $.param(queryValue, true);
     };
 
     formLink(){
